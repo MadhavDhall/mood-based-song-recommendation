@@ -85,6 +85,11 @@ def suggestion():
     prediction = model.predict(vectorizer.transform(text_req))
     song = get_song_by_emotion(emotions[prediction[0]])
 
+    print("Prediction:", prediction[0])
+    print("Emotion:", emotions[prediction[0]])
+    print("Selected Song:")
+    print(song)
+
     return jsonify({
         "mood": emotions[prediction[0]],
         "song": {

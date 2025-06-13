@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mood-Based Song Recommender</title>
+    <link rel="stylesheet" href="../static/output.css">
+</head>
+
+<body class="min-h-screen bg-linear-to-br from-[#103D63] to-[#116E93] flex items-center justify-center px-6 py-8">
+    <div
+        class="w-full max-w-xl p-5 md:p-10 lg:p-16 rounded-2xl bg-linear-to-b from-[#19446C] to-[#0B435B] text-white text-center d-flex flex-col items-center justify-center space-y-8 border-2 border-[#2080AD] shadow-lg">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl">Mood Based Song <br> Suggestion</h1>
+
+        <!-- <div class="p-2 lg:p-5 rounded-xl text-md md:text-xl"> -->
+        <div class="d-flex flex-col space-y-2 w-full text-md md:text-xl">
+            <input type="text" placeholder="Say something about your mood..."
+                class="w-full p-3 rounded-lg bg-linear-to-r from-[#143E63] to-[#113C5A] text-gray-200 focus:outline-none border-1 border-[#20517C]"
+                id="moodInput" required>
+
+            <button id="submitButton"
+                class="mt-4 w-full bg-linear-to-r from-[#DFEAF3] to-[#E1E9F2] text-black p-3 rounded-lg hover:bg-linear-to-r hover:from-[#d6e8f8] hover:to-[#d2e6f8]"
+                onclick="getSuggestions()">
+                Get Suggestions
+            </button>
+        </div>
+        <!-- </div> -->
+
+        <div class="d-flex hidden flex-column space-y-4 text-lg md:text-xl lg:text-2xl" id="moodContainer">
+            <h3 class="md:text-2xl lg:text-3xl"><b>Detected Mood:</b> <span id="mood"
+                    class="capitalize text-[#ABFFC7]"></span></h3>
+            <h4><span class="text-gray-300">Suggested Song:</span> <span id="song"></span> By <span id="artist"></span>
+            </h4>
+
+            <a href="#" target="_blank" class="text-black px-6 py-2 bg-white rounded-md" id="link">⏵ Play</a>
+        </div>
+    </div>
+
+    <script src="../static/main.js"></script>
+</body>
+
+</html>

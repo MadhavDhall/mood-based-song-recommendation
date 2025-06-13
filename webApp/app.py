@@ -5,13 +5,19 @@ import pickle
 import pandas as pd
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+import os
+
+model_path = os.path.join(os.path.dirname(__file__), 'model', 'emotion_detector.pkl')
+vectorizer_path = os.path.join(os.path.dirname(__file__), 'model', 'vectorizer_emotion.pkl')
+
+data_path = os.path.join(os.path.dirname(__file__), 'data', 'data_moods.csv')
 
 # Use pickle to load in the pre-trained model.
-with open(f'model/emotion_detector.pkl', 'rb') as f:
+with open(model_path, 'rb') as f:
     model = pickle.load(f)
 
 # Use pickle to load in vectorizer.
-with open(f'model/vectorizer_emotion.pkl', 'rb') as f:
+with open(vectorizer_path, 'rb') as f:
     vectorizer = pickle.load(f)
 
 # instance of flask application
@@ -21,7 +27,7 @@ emotions=["sadness", "joy", "love", "anger", "fear", "surprise"] #emotions list 
 
 # Loading only required columns from the songs dataset
 columns_needed = ['name', 'album', 'artist', 'id', 'release_date', 'popularity', 'mood']
-songsData = pd.read_csv("./data/data_moods.csv", usecols=columns_needed)
+songsData = pd.read_csv(data_path, usecols=columns_needed)
 
 # print(songsData.head())  # Displaying the first few rows of the dataset
 # Map Emotion → Mood
